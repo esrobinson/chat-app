@@ -1,9 +1,18 @@
-var http = require('http'),
-    fs = require('fs'),
+var fs = require('fs'),
+    router = require('./router.js'),
+    server = require('http').createServer(router.router),
     path = require('path'),
     mime = require('mime'),
-    router = require('./router.js');
+    chat = require('./lib/chat_server.js');
 
-http.createServer(router.router).listen(8080);
+server.listen(8080);
+
+chat.createChat(server);
+
+
+
+
+
+
 
 console.log("Server running on post 8080");

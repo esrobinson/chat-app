@@ -5,12 +5,17 @@ var router = function(req, res){
     fileName = '/public/index.html';
   }
   getFile(fileName, function(data){
-    res.end(data);
+    if (!data ) {
+      res.writeHead(404, {'Content-Type': 'text/plain'});
+      res.end("404 Not Found");
+    } else {
+      res.end(data);
+    }
   });
 }
 
 var getFile = function(name, callback){
-  fs.readFile('.' + name, function(err, data){
+  fs.readFile('.' + name, {encoding: 'utf8'},function(err, data){
     callback(data);
   })
 }
