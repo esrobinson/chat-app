@@ -1,0 +1,23 @@
+div#msg-box{
+  height: 75%;
+  width: 50% ;
+  border: thin solid black;
+  overflow: auto;
+  float: left;
+}
+
+div#user-list{
+  height: 75%;
+  width: 15%;
+  border: thin solid black;
+  float: left;
+  display: inline-block;
+}
+
+div#chat-room {
+  display: inline;
+}
+
+form#msg-form {
+  clear: both;
+}
