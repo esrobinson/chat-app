@@ -1,4 +1,5 @@
 var fs = require("fs");
+var cache = {};
 var router = function(req, res){
   fileName = req.url;
   if(fileName === '/') {
@@ -12,12 +13,19 @@ var router = function(req, res){
       res.end(data);
     }
   });
-}
+};
 
 var getFile = function(name, callback){
-  fs.readFile('.' + name, {encoding: 'utf8'},function(err, data){
-    callback(data);
-  })
-}
+  if (cache[name]) {
+    callback(cache[name]);
+    console.log("reloading data: " + name);
+  } else {
+    fs.readFile('.' + name, {encoding: 'utf8'},function(err, data){
+      console.log("getting data: " + name)
+      cache[name] = data;
+      callback(data);
+    });
+  }
+};
 
 exports.router = router;

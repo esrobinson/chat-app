@@ -4,6 +4,7 @@ div#msg-box{
   border: thin solid black;
   overflow: auto;
   float: left;
+  background-color: red;
 }
 
 div#user-list{
@@ -12,10 +13,12 @@ div#user-list{
   border: thin solid black;
   float: left;
   display: inline-block;
+  background-color: blue;
 }
 
 div#chat-room {
   display: inline;
+  align: center;
 }
 
 form#msg-form {
